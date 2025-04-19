@@ -162,9 +162,6 @@ Happy home-labbing in the boring fascist dystopian future nightmare.
 
 ---
 
-Nice—Ethereum added to the tip jar. Here's the updated and polished **donate section** for your README, with everything included:
-
----
 
 ### ☕ Like the project? Toss a coin to your coder
 
