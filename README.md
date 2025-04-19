@@ -112,6 +112,7 @@ docker run -d \
 docker run -d \
   -e FLASK_MAX_CONTENT_LENGTH=8796093022208 \
   -v /home/docker/file-dropper/app/uploads:/app/uploads \
+  -p 8080:8080 \
   --name file-dropper \
   --restart always \
   file-dropper
@@ -129,6 +130,8 @@ services:
       - FLASK_MAX_CONTENT_LENGTH=8796093022208
     volumes:
       - /home/docker/file-dropper/app/uploads:/app/uploads
+    ports:
+      - 8080:8080
     container_name: file-dropper
     restart: always
     image: file-dropper
