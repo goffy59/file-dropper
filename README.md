@@ -91,16 +91,16 @@ docker build -t file-dropper .
 
 ```bash
 docker run -d \
-  -e TZ=Etc/UTC \
+  --name file-dropper \
+  --restart always \
   --net=lsio \
   --label "swag=enable" \
+  --label com.centurylinklabs.watchtower.enable=false \
+  -e TZ=Etc/UTC \
   -e UID=1000 \
   -e GID=1000 \
   -e FLASK_MAX_CONTENT_LENGTH=8796093022208 \
   -v /home/docker/file-dropper/app/uploads:/app/uploads \
-  --name file-dropper \
-  --restart always \
-  --label com.centurylinklabs.watchtower.enable=false \
   file-dropper
 ```
 
@@ -110,11 +110,11 @@ docker run -d \
 
 ```bash
 docker run -d \
+  --name file-dropper \
+  --restart always \
   -e FLASK_MAX_CONTENT_LENGTH=8796093022208 \
   -v /home/docker/file-dropper/app/uploads:/app/uploads \
   -p 8080:8080 \
-  --name file-dropper \
-  --restart always \
   file-dropper
 ```
 
@@ -123,18 +123,19 @@ docker run -d \
 ### 🧱 Example 3: Docker Compose
 
 ```yaml
-name: file-dropper
+version: "3.8"
+
 services:
   file-dropper:
+    container_name: file-dropper
+    image: file-dropper
+    restart: always
     environment:
       - FLASK_MAX_CONTENT_LENGTH=8796093022208
     volumes:
       - /home/docker/file-dropper/app/uploads:/app/uploads
     ports:
       - 8080:8080
-    container_name: file-dropper
-    restart: always
-    image: file-dropper
 ```
 
 ---
