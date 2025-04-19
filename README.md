@@ -74,6 +74,15 @@ If you need auth, HTTPS, or sandboxing, wrap it in:
 
 Bottom line: **use only where you already trust the channel.** Don’t treat this like a vault. Treat it like a courier that doesn’t ask questions.
 
+### 📦 Installation:
+'''bash
+git clone https://github.com/goffy59/file-dropper.git
+
+cd file-dropper
+
+docker build -t file-dropper .
+'''
+
 ---
 
 ## 💻 Usage Examples
