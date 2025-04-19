@@ -1,0 +1,27 @@
+FROM python:3.9-alpine
+
+# Create a new user and group
+RUN addgroup -S dietpi && adduser -S -G dietpi dietpi
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app/templates ./templates
+
+RUN mkdir -p uploads  # Create the 'uploads' directory
+
+COPY app/file_drop.py ./file_drop.py
+
+# Set ownership and permissions for the file_drop.py file
+RUN chown dietpi:dietpi /app/file_drop.py
+RUN chmod +x /app/file_drop.py
+
+# Set ownership of other files and directories
+RUN chown -R dietpi:dietpi /app/templates /app/uploads
+
+USER dietpi
+
+CMD ["python", "file_drop.py"]
+

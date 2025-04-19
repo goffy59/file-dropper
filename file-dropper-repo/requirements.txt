@@ -1,0 +1,6 @@
+flask
+flask-httpauth
+pillow
+gunicorn
+werkzeug
+olefile

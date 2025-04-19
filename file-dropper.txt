@@ -1,0 +1,16 @@
+docker build -t file-dropper .
+
+
+#example docker run -d I use within my lsio/swag network/reverse-proxy
+docker run -d \
+  -e TZ=Etc/UTC \
+  --net=lsio \
+  --label "swag=enable" \
+  -e UID=1000 \
+  -e GID=1000 \
+  -e FLASK_MAX_CONTENT_LENGTH=8796093022208 \
+  -v /home/docker/file-dropper/app/uploads:/app/uploads \
+  --name file-dropper \
+  --restart always \
+  --label com.centurylinklabs.watchtower.enable=false \
+  file-dropper
