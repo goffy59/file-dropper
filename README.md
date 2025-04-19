@@ -75,13 +75,13 @@ If you need auth, HTTPS, or sandboxing, wrap it in:
 Bottom line: **use only where you already trust the channel.** Don’t treat this like a vault. Treat it like a courier that doesn’t ask questions.
 
 ### 📦 Installation:
-'''bash
+```bash
 git clone https://github.com/goffy59/file-dropper.git
 
 cd file-dropper
 
 docker build -t file-dropper .
-'''
+```
 
 ---
 
@@ -132,6 +132,12 @@ services:
     container_name: file-dropper
     restart: always
     image: file-dropper
+```
+
+### 🚀 Acessing the webui
+
+```text
+Goto "http://localhost:8080" in your chosen browser and upload a file and refresh and you will see the file listed below that you can then copy the URL from its link to easily download files from other computers on your local network. Be sure to use the local IP of the computer running this container. You may need to adjust permissions on the host running the docker but your milage may vary. I use this on my reverse proxy SWAG under a subdomain/cloudflared tunnel setup and I added http auth. I also made it limit what could be added to the uploaded files which you can adjust if you want in the python app file in the app directory. Feel free to do what you want.
 ```
 
 ---
