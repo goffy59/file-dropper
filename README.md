@@ -136,10 +136,10 @@ services:
 
 ### 🚀 Acessing the webui
 
-```text
-Goto "http://localhost:8080" in your chosen browser and upload a file and refresh and you will see the file listed below that you can then copy the URL from its link to easily download files from other computers on your local network. Be sure to use the local IP of the computer running this container. You may need to adjust permissions on the host running the docker but your milage may vary. I use this on my reverse proxy SWAG under a subdomain/cloudflared tunnel setup and I added http auth. I also made it limit what could be added to the uploaded files which you can adjust if you want in the python app file in the app directory. Feel free to do what you want.
+```url
+http://localhost:8080/
 ```
-
+Goto "http://localhost:8080" in your chosen browser and upload a file and refresh and you will see the file listed below that you can then copy the URL from its link to easily download files from other computers on your local network. Be sure to use the local IP of the computer running this container. You may need to adjust permissions on the host running the docker but your milage may vary. I use this on my reverse proxy SWAG under a subdomain/cloudflared tunnel setup and I added http auth. I also made it limit what could be added to the uploaded files which you can adjust if you want in the python app file in the app directory. Feel free to do what you want.
 ---
 
 ### 📬 Questions?
