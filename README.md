@@ -1,5 +1,3 @@
-Perfect. Thanks for the deep dive—this thing deserves a proper write-up, and you’ve earned it. Here's a cleaned-up, accurate, no-BS description of **file-dropper**, shaped by exactly what you've got going on:
-
 ---
 
 ## 🗂️ file-dropper
