@@ -1,31 +1,133 @@
 ---
 
+```text
+   ______ _ _      _____                      _                           
+  |  ____(_) |    |  __ \                    | |                          
+  | |__   _| | ___| |  | | _____   _____  ___| |_ ___  _ __ ___ ___  ___ 
+  |  __| | | |/ _ \ |  | |/ _ \ \ / / _ \/ __| __/ _ \| '__/ __/ _ \/ __|
+  | |    | | |  __/ |__| |  __/\ V /  __/\__ \ || (_) | | | (_|  __/\__ \
+  |_|    |_|_|\___|_____/ \___| \_/ \___||___/\__\___/|_|  \___\___||___/
+                                                                         
+```  
+
+> “I built this for the ones who don’t ask permission.  
+> For sysadmins who live like ghosts.  
+> For devs who never trusted the cloud.  
+> For rebels, refugees, and the radiant few.  
+> May your files move in silence. May your machines whisper only to you.”  
+> — *Kateryna Sofiya Chernenko*
+
+---
+
 ## 🗂️ file-dropper
 
 A minimalist, Dockerized file upload service you can self-host and trust **for simple use cases**.
 
 **file-dropper** is a lightweight, web-based file dropbox built for devs, sysadmins, and everyday folks who just need an easy way to send or receive files—without relying on cloud storage, weird clients, or bloated services.
 
+---
+
 ### 🚀 Features
 
 - 🐳 **Docker-native**: Spins up in seconds via `docker run` or `compose`
-- 🌐 **Web UI**: Clean drag-and-drop interface for uploading files
+- 🌐 **Web UI**: Clean interface for uploading and downloading files
 - 📁 **Direct-to-disk**: Uploaded files land right in your shared volume
 - 🤝 **Works great locally**: Drop files between machines, VMs, or containers
-- 🔐 **Optional HTTP basic auth** if you want a light gate
 - ⚙️ **Customizable**: Modify templates, change storage paths, tweak limits
 
-### 🧠 Why it exists
+---
 
-Because sometimes you just need a simple way to move a file from one machine to another. No signup, no login, no cloud drama—just a clean dropzone in your browser that writes to disk.
+### 🧠 Why It Exists
 
-file-dropper is perfect for:
+Because sometimes you just need a simple way to move a file from one machine to another.  
+No signup. No login. No cloud drama.  
+Just a clean dropzone in your browser that writes to disk.
+
+Perfect for:
+
 - Transferring logs, configs, or patches across systems
 - Sending someone a file without emailing it
 - Temporary local LAN setups, VM communication, or airgap bridge work
 
-🛑 **Note:** This is *not* a hardened or security-audited tool. It’s built for **convenience** in **controlled environments**. Use with care if exposed to the wider internet.
+---
+
+### 🔐 Threat Model
+
+> _This is not Zero Trust. This is Zero Bullshit._
+
+file-dropper is designed for **controlled environments** where you already trust the network and the people on it. Think: your LAN, your homelab, or your airgapped edge device. If you're running this exposed on the open internet without protections, you’re building a zipline over a volcano.
+
+Security assumptions:
+
+- No auth, no encryption, no access controls—**by design**
+- Anyone who can reach the web UI can upload/download
+- Files are stored **on disk**, unencrypted, in the open
+- It’s Flask behind the curtain—respect the stack
+
+If you need auth, HTTPS, or sandboxing, wrap it in:
+- A reverse proxy like Nginx or Traefik
+- A container firewall or MAC policy
+- Physical or network segmentation
+
+Bottom line: **use only where you already trust the channel.** Don’t treat this like a vault. Treat it like a courier that doesn’t ask questions.
 
 ---
 
-Let me know if you have any questions. Happy home-labbing in the fascist dystopian future. Delete the cloud and embrace self hosting.
+## 💻 Usage Examples
+
+### 📦 Example 1: Docker CLI (w/ lsio swag network and reverse proxy)
+
+```bash
+docker run -d \
+  -e TZ=Etc/UTC \
+  --net=lsio \
+  --label "swag=enable" \
+  -e UID=1000 \
+  -e GID=1000 \
+  -e FLASK_MAX_CONTENT_LENGTH=8796093022208 \
+  -v /home/docker/file-dropper/app/uploads:/app/uploads \
+  --name file-dropper \
+  --restart always \
+  --label com.centurylinklabs.watchtower.enable=false \
+  file-dropper
+```
+
+---
+
+### 🔧 Example 2: Minimal Docker CLI
+
+```bash
+docker run -d \
+  -e FLASK_MAX_CONTENT_LENGTH=8796093022208 \
+  -v /home/docker/file-dropper/app/uploads:/app/uploads \
+  --name file-dropper \
+  --restart always \
+  file-dropper
+```
+
+---
+
+### 🧱 Example 3: Docker Compose
+
+```yaml
+name: file-dropper
+services:
+  file-dropper:
+    environment:
+      - FLASK_MAX_CONTENT_LENGTH=8796093022208
+    volumes:
+      - /home/docker/file-dropper/app/uploads:/app/uploads
+    container_name: file-dropper
+    restart: always
+    image: file-dropper
+```
+
+---
+
+### 📬 Questions?
+
+If you're confused, broken, or just vibing in your lab—feel free to reach out.  
+Happy home-labbing in the boring fascist dystopian future nightmare.  
+**Delete the cloud. Embrace self-hosting.**
+
+---
