@@ -134,12 +134,24 @@ services:
     image: file-dropper
 ```
 
-### 🚀 Acessing the webui
+---
 
-```url
+### 🚀 Accessing the Web UI
+
+```text
 http://localhost:8080/
 ```
-Goto "http://localhost:8080" in your chosen browser and upload a file and refresh and you will see the file listed below that you can then copy the URL from its link to easily download files from other computers on your local network. Be sure to use the local IP of the computer running this container. You may need to adjust permissions on the host running the docker but your milage may vary. I use this on my reverse proxy SWAG under a subdomain/cloudflared tunnel setup and I added http auth. I also made it limit what could be added to the uploaded files which you can adjust if you want in the python app file in the app directory. Feel free to do what you want.
+
+Open `http://localhost:8080` in your browser. Upload a file, refresh the page, and you'll see the file listed. You can then copy the direct link to download it from other devices on your local network.
+
+> **Tip:** Replace `localhost` with the **local IP** of the machine running the container if you're accessing it from another device.
+
+You may need to adjust file permissions on the host system depending on your setup—your mileage may vary.
+
+Personally, I run this behind a reverse proxy (SWAG) with a subdomain via a Cloudflared tunnel. I’ve added HTTP authentication and restricted the types of files that can be uploaded. You can tweak those restrictions in the Python app (check the `app` directory).
+
+Feel free to modify it however you like.
+
 ---
 
 ### 📬 Questions?
