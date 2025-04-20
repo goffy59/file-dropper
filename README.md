@@ -1,18 +1,10 @@
 
 ---
 
-```text
-
- _____ _ _        ____                                  
-|  ___(_) | ___  |  _ \ _ __ ___  _ __  _ __   ___ _ __ 
-| |_  | | |/ _ \ | | | | '__/ _ \| '_ \| '_ \ / _ \ '__|
-|  _| | | |  __/ | |_| | | | (_) | |_) | |_) |  __/ |   
-|_|   |_|_|\___| |____/|_|  \___/| .__/| .__/ \___|_|   
-                                 |_|   |_|              
-
-                                                                         
-```  
-
+<p align="center">
+  <img src="file-dropper-ascii.png" alt="ASCII Banner" />
+</p>
+ 
 > “I built this for the ones who don’t ask permission.  
 > For sysadmins who live like ghosts.  
 > For devs who never trusted the cloud.  
