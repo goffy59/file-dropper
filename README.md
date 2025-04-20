@@ -21,7 +21,10 @@
 > — *Kateryna Sofiya Chernenko*
 
 ---
-
+<p align="center">
+  <img src="file-dropper-desktop.png" alt="Desktop View" width="45%"/>
+  <img src="file-dropper-mobile.png" alt="Mobile View" width="45%"/>
+</p>
 ---
 
 ## 🗂️ file-dropper
