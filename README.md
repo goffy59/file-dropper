@@ -61,7 +61,7 @@ Security assumptions:
 
 - No auth, no encryption, no access controls—**by design**
 - Anyone who can reach the web UI can upload/download
-- Files are stored **on disk**, unencrypted, in the open
+- Files are stored **on disk**(docker volume), unencrypted, in the open
 - It’s Flask behind the curtain—respect the stack
 
 If you need auth, HTTPS, or sandboxing, wrap it in:
