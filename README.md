@@ -34,7 +34,6 @@ A minimalist, Dockerized file upload service you can self-host and trust **for s
 
 - 🐳 **Docker-native**: Spins up in seconds via `docker run` or `compose`
 - 🌐 **Web UI**: Clean interface for uploading and downloading files
-- 📁 **Direct-to-disk**: Uploaded files land right in your shared volume
 - 🤝 **Works great locally**: Drop files between machines, VMs, or containers
 - ⚙️ **Customizable**: Modify templates, change storage paths, tweak limits
 
