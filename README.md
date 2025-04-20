@@ -22,6 +22,8 @@
 
 ---
 
+---
+
 ## 🗂️ file-dropper
 
 A minimalist, Dockerized file upload service you can self-host and trust **for simple use cases**.
