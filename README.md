@@ -25,6 +25,7 @@
   <img src="file-dropper-desktop.png" alt="Desktop View" height="400px"/>
   <img src="file-dropper-mobile.png" alt="Mobile View" height="400px"/>
 </p>
+
 ---
 
 ## 🗂️ file-dropper
