@@ -22,8 +22,8 @@
 
 ---
 <p align="center">
-  <img src="file-dropper-desktop.png" alt="Desktop View" width="45%"/>
-  <img src="file-dropper-mobile.png" alt="Mobile View" width="45%"/>
+  <img src="file-dropper-desktop.png" alt="Desktop View" height="400px"/>
+  <img src="file-dropper-mobile.png" alt="Mobile View" height="400px"/>
 </p>
 ---
 
