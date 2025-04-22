@@ -111,7 +111,7 @@ docker run -d \
   --restart always \
   -e FLASK_MAX_CONTENT_LENGTH=8796093022208 \
   -v /home/docker/file-dropper/app/uploads:/app/uploads \
-  -p 8080:8080 \
+  -p 8080:80 \
   file-dropper
 ```
 
@@ -132,7 +132,7 @@ services:
     volumes:
       - /home/docker/file-dropper/app/uploads:/app/uploads
     ports:
-      - 8080:8080
+      - 8080:80
 ```
 
 ---
