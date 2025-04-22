@@ -1,3 +1,4 @@
+This project is on Docker Hub: https://hub.docker.com/r/goffy59/file-dropper
 
 ---
 
