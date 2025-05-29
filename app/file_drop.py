@@ -33,11 +33,11 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 auth = HTTPBasicAuth()
 
 # Define your hashed password
-hashed_password = generate_password_hash('Obie411trice!')
+hashed_password = generate_password_hash('password')
 
 @auth.verify_password
 def verify_password(username, password):
-    if username == 'goffy59' and check_password_hash(hashed_password, password):
+    if username == 'user' and check_password_hash(hashed_password, password):
         return True
     return False
 
