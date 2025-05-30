@@ -32,12 +32,14 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 # Initialize Basic Auth
 auth = HTTPBasicAuth()
 
-# Define your hashed password
-hashed_password = generate_password_hash('password')
+# Load username and password hash from environment or fallback to default
+AUTH_USERNAME = os.getenv("FILEDROPPER_USERNAME", "user")
+AUTH_PASSWORD = os.getenv("FILEDROPPER_PASSWORD", "password")
+hashed_password = generate_password_hash(AUTH_PASSWORD)
 
 @auth.verify_password
 def verify_password(username, password):
-    if username == 'user' and check_password_hash(hashed_password, password):
+    if username == AUTH_USERNAME and check_password_hash(hashed_password, password):
         return True
     return False
 

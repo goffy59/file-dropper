@@ -72,6 +72,26 @@ If you need auth, HTTPS, or sandboxing, wrap it in:
 
 Bottom line: **use only where you already trust the channel.** Don’t treat this like a vault. Treat it like a courier that doesn’t ask questions.
 
+---
+
+### 🔐 Default Credentials
+
+file-dropper ships with a simple, hardcoded login system:
+
+```
+Username: admin  
+Password: password
+```
+
+You can change these in `app/file_drop.py` **before building the image**, or harden the deployment behind a reverse proxy with HTTP basic auth (like SWAG, Nginx, or Traefik).
+
+> *“Passwords should be like secrets: short-lived, easily changed, and never trusted for long.”*
+> — *Kateryna Sofiya Chernenko*
+
+If you want to make credentials configurable via environment variables instead of baking them into the image, that’s on the roadmap. PRs welcome—or yell at me and I’ll wire it in.
+
+---
+
 ### 📦 Installation:
 ```bash
 git clone https://github.com/goffy59/file-dropper.git
@@ -135,6 +155,68 @@ services:
     ports:
       - 8080:80
 ```
+Perfect, Jack. You’ve already got a clean Flask + Gunicorn setup with `flask_httpauth`. Let's wire in **environment-based credentials** without messing with the rest of your setup.
+
+---
+
+### ✅ **Step-by-step patch** for `file_drop.py`
+
+Update the auth section like this:
+
+```python
+# Initialize Basic Auth
+auth = HTTPBasicAuth()
+
+# Load username and password hash from environment or fallback to default
+AUTH_USERNAME = os.getenv("FILEDROPPER_USERNAME", "user")
+AUTH_PASSWORD = os.getenv("FILEDROPPER_PASSWORD", "password")
+hashed_password = generate_password_hash(AUTH_PASSWORD)
+
+@auth.verify_password
+def verify_password(username, password):
+    if username == AUTH_USERNAME and check_password_hash(hashed_password, password):
+        return True
+    return False
+```
+
+Now it supports runtime-provided credentials.
+
+---
+
+### 📦 Update your `README.md`
+
+Somewhere in your usage section:
+
+````markdown
+## 🔐 Authentication
+
+Basic HTTP Auth is used to protect uploads and downloads.
+
+You can customize the credentials by setting environment variables:
+
+```bash
+-e FILEDROPPER_USERNAME=myusername -e FILEDROPPER_PASSWORD=mypassword
+````
+
+If not set, it defaults to:
+
+* Username: `user`
+* Password: `password`
+
+````
+
+---
+
+### 🐳 Example Docker run with creds:
+
+```bash
+docker run -d \
+  --name file-dropper \
+  -e FILEDROPPER_USERNAME=user \
+  -e FILEDROPPER_PASSWORD=password \
+  -p 8080:80 \
+  file-dropper
+````
 
 ---
 
