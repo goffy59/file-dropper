@@ -74,24 +74,6 @@ Bottom line: **use only where you already trust the channel.** Don’t treat thi
 
 ---
 
-### 🔐 Default Credentials
-
-file-dropper ships with a simple, hardcoded login system:
-
-```
-Username: admin  
-Password: password
-```
-
-You can change these in `app/file_drop.py` **before building the image**, or harden the deployment behind a reverse proxy with HTTP basic auth (like SWAG, Nginx, or Traefik).
-
-> *“Passwords should be like secrets: short-lived, easily changed, and never trusted for long.”*
-> — *Kateryna Sofiya Chernenko*
-
-If you want to make credentials configurable via environment variables instead of baking them into the image, that’s on the roadmap. PRs welcome—or yell at me and I’ll wire it in.
-
----
-
 ### 📦 Installation:
 ```bash
 git clone https://github.com/goffy59/file-dropper.git
@@ -120,7 +102,7 @@ docker run -d \
   -e FLASK_MAX_CONTENT_LENGTH=8796093022208 \
   -v /home/docker/file-dropper/app/uploads:/app/uploads \
   file-dropper
-```
+````
 
 ---
 
@@ -158,27 +140,28 @@ services:
 
 ---
 
-````markdown
 ## 🔐 Authentication
 
-Basic HTTP Auth is used to protect uploads and downloads.
+Basic HTTP Auth protects uploads and downloads.
 
-You can customize the credentials by setting environment variables:
+You can customize credentials by setting environment variables in your Docker Compose file or `docker run` command:
 
-```bash
--e FILEDROPPER_USERNAME=myusername -e FILEDROPPER_PASSWORD=mypassword
-````
+```yaml
+environment:
+  - FILEDROPPER_USERNAME=myusername
+  - FILEDROPPER_PASSWORD=mypassword
+```
 
-If not set, it defaults to:
+If not set, defaults are:
 
-* Username: `user`
-* Password: `password`
-
-````
+```text
+FILEDROPPER_USERNAME = user
+FILEDROPPER_PASSWORD = password
+```
 
 ---
 
-### 🐳 Example Docker run with creds:
+### 🐳 Example Docker run with credentials:
 
 ```bash
 docker run -d \
@@ -187,7 +170,7 @@ docker run -d \
   -e FILEDROPPER_PASSWORD=password \
   -p 8080:80 \
   file-dropper
-````
+```
 
 ---
 
