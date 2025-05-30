@@ -155,37 +155,8 @@ services:
     ports:
       - 8080:80
 ```
-Perfect, Jack. You’ve already got a clean Flask + Gunicorn setup with `flask_httpauth`. Let's wire in **environment-based credentials** without messing with the rest of your setup.
 
 ---
-
-### ✅ **Step-by-step patch** for `file_drop.py`
-
-Update the auth section like this:
-
-```python
-# Initialize Basic Auth
-auth = HTTPBasicAuth()
-
-# Load username and password hash from environment or fallback to default
-AUTH_USERNAME = os.getenv("FILEDROPPER_USERNAME", "user")
-AUTH_PASSWORD = os.getenv("FILEDROPPER_PASSWORD", "password")
-hashed_password = generate_password_hash(AUTH_PASSWORD)
-
-@auth.verify_password
-def verify_password(username, password):
-    if username == AUTH_USERNAME and check_password_hash(hashed_password, password):
-        return True
-    return False
-```
-
-Now it supports runtime-provided credentials.
-
----
-
-### 📦 Update your `README.md`
-
-Somewhere in your usage section:
 
 ````markdown
 ## 🔐 Authentication
