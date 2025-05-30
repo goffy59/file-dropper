@@ -200,6 +200,23 @@ Happy home-labbing in the boring fascist dystopian future nightmare.
 
 ---
 
+## 🛤️ Roadmap & Future Improvements
+
+Here’s what’s cooking and what we want to tackle next:
+
+- 🔐 **Better Password Storage:** Move away from plain environment variables to hashed secrets or integrate with secret managers.
+- 🚀 **Performance Tweaks:** Optimize file uploads for larger files and improve concurrency handling.
+- 🔄 **Auto Cleanup:** Implement automatic file expiration and cleanup policies.
+- 🌍 **HTTPS Support:** Add built-in HTTPS options or tighter integration guides for reverse proxies.
+- 🧩 **Plugin System:** Allow custom hooks or plugins to extend functionality (e.g., virus scanning, file type restrictions).
+- 📊 **Usage Analytics:** Lightweight, privacy-respecting upload/download stats.
+- 🧑‍💻 **Improved UI:** Responsive enhancements and dark mode support.
+- 🛡️ **Enhanced Auth:** Support OAuth, LDAP, or token-based auth methods beyond Basic HTTP.
+- ⚙️ **Configuration Profiles:** Support multiple profiles/environments for easy switching.
+
+If you’ve got ideas or want to help out, open an issue or drop a line!
+
+---
 
 ### ☕ Like the project? Toss a coin to your coder
 
