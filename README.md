@@ -222,18 +222,8 @@ If you’ve got ideas or want to help out, open an issue or drop a line!
 
 If this tool saved you some time or spared you a few curses, feel free to drop a little something in the jar. No pressure—it's free, open-source, and always will be. But if you're feeling generous:
 
-**Ethereum (ETH):**  
-`0x85853eF36564c68ec14e30Bc0F3e834f6e4D9C46`
-
-**Zilliqa (ZIL):**  
-`zil1zk94gcvthmlfw4glycgc2lsp0s0rzyyaayje39`
-
-**Ravencoin (RVN):**  
-`RTtsVNZAe6AtLQ8bew2gmELs3C2n3ZtJzC`  
-
-**FIO Address:**  
-`FIO7fw9iaab3jpCo4vS94sTJk1pDwmRC3whhBeraWDANJWnzBCmNF`  
-*(FIO-compatible wallets like Guarda work fine here.)*
+**PayPal:**  
+'jack@netblues.org'
 
 Thanks for checking out the project—whether you donate or not, you're awesome for even reading this far. 🤘
 
